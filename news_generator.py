@@ -6,7 +6,7 @@ alf.extend([chr(i) for i in range(ord('a'), ord('z'))])
 alf.extend([chr(i) for i in range(ord('A'), ord('Z'))])
 alf.extend([' ', ' ', ' ', ' ', ' ', ' ', ' ', ',', ':', '-'])
 ans = []
-for _ in range(randint(50, 100)):
+for _ in range(randint(50, 100)):  # кол-во постов
     row = ''
     for _ in range(randint(5, 10)):
         buf = '\n'
@@ -14,9 +14,9 @@ for _ in range(randint(50, 100)):
             buf += choice(alf)
         row += buf
     row += '\n'
-    for qtty in range(randint(1, 3)):
+    for qtty in range(randint(1, 3)):  # кол-во дубликатов
         new = list(row.replace('\n', '&'))
-        n = len(new) * randint(10, 30) // 100
+        n = len(new) * randint(10, 30) // 100  # процент изменённых символов
         s = 0
         while s != n:
             pos = randint(0, len(new) - 1)

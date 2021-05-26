@@ -13,8 +13,8 @@ for i in file:
     flag = True
     for row in cur.execute('SELECT text FROM posts'):
         line = row[0]
-        dif.append(fuzz.token_sort_ratio(row[0], i))
-        if fuzz.token_sort_ratio(row[0], i) >= 40:
+        dif.append(fuzz.token_sort_ratio(row[0], i))  # список со процентами схожести
+        if fuzz.token_sort_ratio(row[0], i) >= 40:  # процент схожест постов
             print(row[0], i)
             print('ABOBA')
             flag = False
