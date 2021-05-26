@@ -20,8 +20,8 @@ for i in file:
             flag = False
             break
     if flag:
-        cur.execute(f"INSERT INTO posts (text) VALUES ('{i}')")
         ans.write(i + '///')
+    cur.execute(f"INSERT INTO posts (text) VALUES ('{i}')")
 ans.close()
 con.commit()
 op = open('new_news.txt')
