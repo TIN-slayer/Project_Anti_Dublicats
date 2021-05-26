@@ -8,12 +8,15 @@ con.commit()
 f = open('old_news.txt')
 file = f.read().split('///')[:-1]
 ans = open('new_news.txt', 'w')
+dif = []
 for i in file:
     flag = True
     for row in cur.execute('SELECT text FROM posts'):
         line = row[0]
-        # print(fuzz.token_sort_ratio(row[0], i))
-        if fuzz.token_sort_ratio(row[0], i) >= 80:
+        dif.append(fuzz.token_sort_ratio(row[0], i))
+        if fuzz.token_sort_ratio(row[0], i) >= 40:
+            print(row[0], i)
+            print('ABOBA')
             flag = False
             break
     if flag:
@@ -23,4 +26,8 @@ ans.close()
 con.commit()
 op = open('new_news.txt')
 op_ans = op.read().split('///')[:-1]
+print()
+print(sorted(dif, reverse=True))
+print(f'Изначальное кол-во новостей: {len(file)}')
+print(f'Конечное кол-во новостей: {len(op_ans)}')
 print(f'Удалено дубликатов: {len(file) - len(op_ans)}')

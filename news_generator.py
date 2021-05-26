@@ -14,9 +14,9 @@ for _ in range(randint(50, 100)):
             buf += choice(alf)
         row += buf
     row += '\n'
-    for qtty in range(randint(2, 3)):
+    for qtty in range(randint(1, 3)):
         new = list(row.replace('\n', '&'))
-        n = len(new) * randint(0, 5) // 100
+        n = len(new) * randint(10, 30) // 100
         s = 0
         while s != n:
             pos = randint(0, len(new) - 1)
